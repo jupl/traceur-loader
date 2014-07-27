@@ -23,7 +23,16 @@ require("traceur?runtime=true&arrowFunctions=false!./script-file");
 {
   module: {
     loaders: [
-      {test: /\*.js$/, loader: 'traceur?runtime=true&modules=register'}
+      {test: /\*.js$/, loader: 'traceur'}
+    ]
+  }
+}
+
+// With parameters
+{
+  module: {
+    loaders: [
+      {test: /\*.js$/, loader: 'traceur-loader?runtime=true&modules=register'}
     ]
   }
 }
