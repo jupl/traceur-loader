@@ -1,4 +1,4 @@
-# traceur-loader 0.1.0
+# traceur-loader 0.1.1
 [![Dependency Status](https://gemnasium.com/jupl/traceur-loader.png)](https://gemnasium.com/jupl/traceur-loader)
 
 [Traceur](https://github.com/google/traceur-compiler) loader for [Webpack](https://webpack.github.io/).
