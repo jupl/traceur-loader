@@ -1,5 +1,5 @@
-# traceur-loader 0.1.1
-[![Dependency Status](https://gemnasium.com/jupl/traceur-loader.png)](https://gemnasium.com/jupl/traceur-loader)
+# traceur-loader 0.2.3
+[![Dependency Status](http://img.shields.io/gemnasium/jupl/traceur-loader.svg?style=flat)](https://gemnasium.com/jupl/traceur-loader)
 
 [Traceur](https://github.com/google/traceur-compiler) loader for [Webpack](https://webpack.github.io/).
 
@@ -8,14 +8,14 @@
 // Simple option (does not include Traceur runtime)
 require("traceur!./script-file");
 
-// Include Traceur runtime
+// Include Traceur runtime automatically
 require("traceur?runtime=true!./script-file");
 
 // Specify Traceur options
-require("traceur?generators=false&symbols=true!./script-file");
+require("traceur?experimental=true&symbols=true!./script-file");
 
 // All together now
-require("traceur?runtime=true&arrowFunctions=false!./script-file");
+require("traceur?experimental=true&runtime=true&symbols=true!./script-file");
 ```
 
 ### Recommended configuration
@@ -32,15 +32,14 @@ require("traceur?runtime=true&arrowFunctions=false!./script-file");
 {
   module: {
     loaders: [
-      {test: /\*.js$/, loader: 'traceur-loader?runtime=true&modules=register'}
+      {test: /\*.js$/, loader: 'traceur?experimental=true&runtime=true'}
     ]
   }
 }
 ```
 
 ### Defaults
-- `experimental = true` - Experimental features enabled
 - `modules = 'commonjs'` - Modules set to CommonJS (consistent with Node.js and Webpack)
-- `runtime = false` - Traceur runtime by default not included
+- `runtime = false` - Traceur runtime by default not auto included
 
 To view all Traceur options, visit [here](https://github.com/google/traceur-compiler/blob/master/src/Options.js).

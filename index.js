@@ -5,7 +5,6 @@ var loaderUtils = require('loader-utils');
 var os = require('os');
 var traceur = require('traceur');
 var defaults = {
-  experimental: true,
   modules: 'commonjs',
   runtime: false
 };
