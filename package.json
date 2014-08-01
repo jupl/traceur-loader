@@ -2,7 +2,7 @@
   "name": "traceur-loader",
   "author": "Juan Placencia",
   "description": "Traceur loader for Webpack",
-  "version": "0.2.3",
+  "version": "0.3.0",
   "license": "MIT",
   "homepage": "https://github.com/jupl/traceur-loader",
   "repository": {
@@ -12,10 +12,8 @@
   "main": "index.js",
   "dependencies": {
     "extend-object": "^1.0.0",
-    "loader-utils": "^0.2.3"
-  },
-  "peerDependencies": {
-    "traceur": "*"
+    "loader-utils": "^0.2.3",
+    "traceur": "0.0.52"
   },
   "keywords": [
     "webpack",

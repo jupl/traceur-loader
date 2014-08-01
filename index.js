@@ -20,7 +20,7 @@ module.exports = function(source) {
   // Process query and setup options/defaults/forced for Traceur
   extend(options, defaults, loaderUtils.parseQuery(this.query), {
     filename: loaderUtils.getRemainingRequest(this),
-    sourceMap: true
+    sourceMaps: true
   });
   Object.keys(options).forEach(function(key) {
     switch(options[key]) {
@@ -55,8 +55,8 @@ module.exports = function(source) {
   }
 
   // Process source map (if available) and return result
-  if(options.sourceMap) {
-    map = JSON.parse(result.sourceMap);
+  if(options.sourceMaps) {
+    map = JSON.parse(result.generatedSourceMap);
     map.sourcesContent = [source];
     this.callback(null, result.js, map);
   }
