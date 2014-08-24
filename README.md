@@ -1,7 +1,7 @@
-# traceur-loader 0.3.0
+# traceur-loader 0.4.0
 [![Dependency Status](http://img.shields.io/gemnasium/jupl/traceur-loader.svg?style=flat)](https://gemnasium.com/jupl/traceur-loader)
 
-[Traceur](https://github.com/google/traceur-compiler) 0.0.52 loader for [Webpack](https://webpack.github.io/).
+[Traceur](https://github.com/google/traceur-compiler) loader for [Webpack](https://webpack.github.io/).
 
 ## Usage
 ```javascript
