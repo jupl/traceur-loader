@@ -57,7 +57,7 @@ module.exports = function(source) {
     if(options.sourceMaps) {
       map = JSON.parse(compiler.getSourceMap());
       map.sourcesContent = [source];
-      this.callback(null, result.js, map);
+      this.callback(null, result, map);
     }
     else {
       return result.js;
