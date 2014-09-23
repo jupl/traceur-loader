@@ -7,13 +7,13 @@
 require("traceur!./script-file");
 
 // Include Traceur runtime automatically
-require("traceur?runtime=true!./script-file");
+require("traceur?runtime!./script-file");
 
 // Specify Traceur options
-require("traceur?experimental=true&symbols=true!./script-file");
+require("traceur?experimental&symbols!./script-file");
 
 // All together now
-require("traceur?experimental=true&runtime=true&symbols=true!./script-file");
+require("traceur?experimental&runtime&symbols!./script-file");
 ```
 
 ### Recommended configuration
@@ -30,7 +30,7 @@ require("traceur?experimental=true&runtime=true&symbols=true!./script-file");
 {
   module: {
     loaders: [
-      {test: /\*.js$/, loader: 'traceur?experimental=true&runtime=true'}
+      {test: /\*.js$/, loader: 'traceur?experimental&runtime'}
     ]
   }
 }
