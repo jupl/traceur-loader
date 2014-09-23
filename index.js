@@ -10,6 +10,7 @@ var defaults = {
 };
 
 module.exports = function(source) {
+  var filename = loaderUtils.getRemainingRequest(this)
   var content = source;
   var map;
   var options = {};
@@ -19,7 +20,6 @@ module.exports = function(source) {
 
   // Process query and setup options/defaults/forced for Traceur
   extend(options, defaults, loaderUtils.parseQuery(this.query), {
-    filename: loaderUtils.getRemainingRequest(this),
     sourceMaps: true
   });
   Object.keys(options).forEach(function(key) {
@@ -48,19 +48,22 @@ module.exports = function(source) {
   }
 
   // Parse code through Traceur
-  delete options.runtime;
-  result = traceur.compile(content, options);
-  if(result.errors.length) {
-    throw new Error(result.errors.join(os.EOL));
-  }
+  try {
+    delete options.runtime;
+    var compiler = new traceur.Compiler(options);
+    result = compiler.compile(content);
 
-  // Process source map (if available) and return result
-  if(options.sourceMaps) {
-    map = JSON.parse(result.generatedSourceMap);
-    map.sourcesContent = [source];
-    this.callback(null, result.js, map);
+    // Process source map (if available) and return result
+    if(options.sourceMaps) {
+      map = JSON.parse(compiler.getSourceMap());
+      map.sourcesContent = [source];
+      this.callback(null, result.js, map);
+    }
+    else {
+      return result.js;
+    }
   }
-  else {
-    return result.js;
+  catch(errors) {
+    throw new Error(errors.join(os.EOL));
   }
 };
