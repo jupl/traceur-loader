@@ -40,10 +40,10 @@ module.exports = function(source) {
   });
 
   // Handle Traceur runtime
+  if(options.filename === traceur.RUNTIME_PATH) {
+    return content;
+  }
   if(options.runtime) {
-    if(options.filename === traceur.RUNTIME_PATH) {
-      return content;
-    }
     content = 'require("' + traceur.RUNTIME_PATH + '");' + content;
   }
 
@@ -67,3 +67,5 @@ module.exports = function(source) {
     throw new Error(errors.join(os.EOL));
   }
 };
+
+module.exports.runtime = traceur.RUNTIME_PATH;
