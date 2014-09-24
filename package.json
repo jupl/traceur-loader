@@ -2,7 +2,7 @@
   "name": "traceur-loader",
   "author": "Juan Placencia",
   "description": "Traceur loader for Webpack",
-  "version": "0.5.1",
+  "version": "0.5.2",
   "license": "MIT",
   "homepage": "https://github.com/jupl/traceur-loader",
   "repository": {
