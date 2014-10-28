@@ -1,5 +1,5 @@
-# traceur-loader 0.5.2
-[Traceur](https://github.com/google/traceur-compiler) loader for [Webpack](https://webpack.github.io/).
+# traceur-loader 0.6.0
+[Traceur](https://github.com/google/traceur-compiler) 0.0.72 loader for [Webpack](https://webpack.github.io/).
 
 ## Usage
 ```javascript
