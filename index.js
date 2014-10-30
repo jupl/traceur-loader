@@ -40,7 +40,7 @@ module.exports = function(source) {
   });
 
   // Handle Traceur runtime
-  if(options.filename === traceur.RUNTIME_PATH) {
+  if(filename === traceur.RUNTIME_PATH) {
     return content;
   }
   if(options.runtime) {
@@ -51,7 +51,7 @@ module.exports = function(source) {
   try {
     delete options.runtime;
     var compiler = new traceur.Compiler(options);
-    result = compiler.compile(content);
+    result = compiler.compile(content, filename);
 
     // Process source map (if available) and return result
     if(options.sourceMaps) {
