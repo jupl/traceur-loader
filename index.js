@@ -10,7 +10,7 @@ var defaults = {
 };
 
 module.exports = function(source) {
-  var filename = loaderUtils.getRemainingRequest(this)
+  var filename = loaderUtils.getRemainingRequest(this);
   var content = source;
   var map;
   var options = {};
