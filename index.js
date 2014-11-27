@@ -57,9 +57,15 @@ module.exports = function(source, original_source_map) {
     // Process source map (if available) and return result
     if(options.sourceMaps) {
       map = JSON.parse(compiler.getSourceMap());
-      map.sourcesContent = [source];
       if(original_source_map){
-        map = transfer({fromSourceMap: original_source_map, toSourceMap: map});
+        map = JSON.parse(transfer({fromSourceMap: map, toSourceMap: original_source_map}));
+
+        var originalSourceContent = original_source_map.sourcesContent;
+        originalSourceContent.push(source);
+
+        map.sourcesContent = originalSourceContent;
+      } else {
+        map.sourcesContent = [source];
       }
       this.callback(null, result, map);
     }
