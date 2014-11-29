@@ -19,20 +19,16 @@ require("traceur?experimental&runtime&symbols!./script-file");
 ### Recommended configuration
 ```javascript
 {
-  module: {
-    loaders: [
-      {test: /\*.js$/, loader: 'traceur'}
-    ]
-  }
+  loaders: [
+    {test: /\*.js$/, loader: 'traceur'}
+  ]
 }
 
 // With parameters
 {
-  module: {
-    loaders: [
-      {test: /\*.js$/, loader: 'traceur?experimental&runtime'}
-    ]
-  }
+  loaders: [
+    {test: /\*.js$/, loader: 'traceur?experimental&runtime'}
+  ]
 }
 ```
 
