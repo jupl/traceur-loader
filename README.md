@@ -16,19 +16,29 @@ require("traceur?experimental&symbols!./script-file");
 require("traceur?experimental&runtime&symbols!./script-file");
 ```
 
-### Recommended configuration
+### Recommended configuration (do not process modules)
 ```javascript
 {
-  loaders: [
-    {test: /\*.js$/, loader: 'traceur'}
-  ]
+  module: {
+    loaders: [
+      {
+        test: /^(?!.*(bower_components|node_modules))+.+\.js$/,
+        loader: 'traceur'
+      }
+    ]
+  }
 }
 
 // With parameters
 {
-  loaders: [
-    {test: /\*.js$/, loader: 'traceur?experimental&runtime'}
-  ]
+  module: {
+    loaders: [
+      {
+        test: /^(?!.*(bower_components|node_modules))+.+\.js$/,
+        loader: 'traceur?experimental&runtime'
+      }
+    ]
+  }
 }
 ```
 
