@@ -6,7 +6,8 @@ var os = require('os');
 var traceur = require('traceur');
 var defaults = {
   modules: 'commonjs',
-  runtime: false
+  runtime: false,
+  sourceMaps: true
 };
 
 module.exports = function(source) {
@@ -19,9 +20,7 @@ module.exports = function(source) {
   this.cacheable && this.cacheable();
 
   // Process query and setup options/defaults/forced for Traceur
-  extend(options, defaults, loaderUtils.parseQuery(this.query), {
-    sourceMaps: true
-  });
+  extend(options, defaults, loaderUtils.parseQuery(this.query));
   Object.keys(options).forEach(function(key) {
     switch(options[key]) {
       case 'true':
