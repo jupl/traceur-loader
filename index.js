@@ -59,7 +59,7 @@ module.exports = function(source) {
       this.callback(null, result, map);
     }
     else {
-      return result.js;
+      return result;
     }
   }
   catch(errors) {

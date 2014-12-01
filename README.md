@@ -1,4 +1,4 @@
-# traceur-loader 0.6.2
+# traceur-loader 0.6.3
 [Traceur](https://github.com/google/traceur-compiler) 0.0.72 loader for
 [Webpack](https://webpack.github.io/).
 
