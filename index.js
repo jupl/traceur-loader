@@ -50,7 +50,7 @@ module.exports = function(source) {
   // Parse code through Traceur
   try {
     delete options.runtime;
-    var compiler = new traceur.Compiler(options);
+    var compiler = new traceur.NodeCompiler(options);
     result = compiler.compile(content, filename);
 
     // Process source map (if available) and return result

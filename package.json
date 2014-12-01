@@ -13,7 +13,7 @@
   "dependencies": {
     "extend-object": "^1.0.0",
     "loader-utils": "^0.2.3",
-    "traceur": "0.0.72"
+    "traceur": "0.0.78"
   },
   "keywords": [
     "webpack",
