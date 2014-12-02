@@ -44,7 +44,7 @@ module.exports = function(source) {
     return content;
   }
   if(options.runtime) {
-    content = 'require("' + traceur.RUNTIME_PATH + '");' + content;
+    content = 'require("imports?global=>window!' + traceur.RUNTIME_PATH + '");' + content;
   }
 
   // Parse code through Traceur
