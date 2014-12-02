@@ -12,7 +12,8 @@ By default traceur-loader using 0.0.72 version of traceur, but you can manually 
 
 *IMPORTANT*
 ````
-  You should install traceur-compiler before traceur-loader, if you want use different version on compiler.
+  You should install traceur-compiler before traceur-loader,
+  if you want use different version on compiler.
 ````
 
 Add `TRACEUR_RUNTIME` to `module.noParse` in `webpack.config.js`
@@ -59,6 +60,9 @@ require("traceur?runtime&symbols!./script-file");
         test: /^(?!.*(bower_components|node_modules))+.+\.js$/,
         loader: 'traceur'
       }
+    ],
+    noParse: [
+      new RegExp(TRACEUR_RUNTIME)
     ]
   }
 }
@@ -71,6 +75,9 @@ require("traceur?runtime&symbols!./script-file");
         test: /^(?!.*(bower_components|node_modules))+.+\.js$/,
         loader: 'traceur?experimental&runtime'
       }
+    ],
+    noParse: [
+      new RegExp(TRACEUR_RUNTIME)
     ]
   }
 }
