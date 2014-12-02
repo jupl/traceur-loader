@@ -4,13 +4,14 @@ var extend = require('extend-object');
 var loaderUtils = require('loader-utils');
 var os = require('os');
 var traceur = require('traceur');
+var transfer = require("multi-stage-sourcemap").transfer;
 var defaults = {
   modules: 'commonjs',
   runtime: false,
   sourceMaps: true
 };
 
-module.exports = function(source) {
+module.exports = function(source, original_source_map) {
   var filename = loaderUtils.getRemainingRequest(this);
   var content = source;
   var map;
@@ -55,7 +56,16 @@ module.exports = function(source) {
     // Process source map (if available) and return result
     if(options.sourceMaps) {
       map = JSON.parse(compiler.getSourceMap());
-      map.sourcesContent = [source];
+      if(original_source_map){
+        map = JSON.parse(transfer({fromSourceMap: map, toSourceMap: original_source_map}));
+
+        var originalSourceContent = original_source_map.sourcesContent;
+        originalSourceContent.push(source);
+
+        map.sourcesContent = originalSourceContent;
+      } else {
+        map.sourcesContent = [source];
+      }
       this.callback(null, result, map);
     }
     else {
