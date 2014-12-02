@@ -1,5 +1,38 @@
 # traceur-loader 0.6.1
-[Traceur](https://github.com/google/traceur-compiler) 0.0.72 loader for [Webpack](https://webpack.github.io/).
+[Traceur](https://github.com/google/traceur-compiler) 0.0.7x loader for [Webpack](https://webpack.github.io/).
+
+## Before using
+
+You should manually install "imports-loader" in your project
+
+`$ npm i imports-loader`
+
+By default traceur-loader using 0.0.72 version of traceur, but you can manually install any version from 0.0.7x.
+
+*IMPORTANT*
+````
+  You should install traceur-compiler before traceur-loader, if you want use different version on compiler.
+````
+
+Add `TRACEUR_RUNTIME` to `module.noParse` in `webpack.config.js`
+
+```javascript
+var
+  TRACEUR_RUNTIME = require('traceur-loader').runtime;
+
+module.exports = {
+
+  //....
+
+  module: {
+    noParse: [
+      new RegExp(TRACEUR_RUNTIME)
+    ]
+  }
+
+  //...
+};
+```
 
 ## Usage
 ```javascript
