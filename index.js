@@ -43,13 +43,13 @@ module.exports = function(source) {
     return content;
   }
   if(options.runtime) {
-    content = 'require("' + traceur.RUNTIME_PATH + '");' + content;
+    content = 'require("imports?global=>window!' + traceur.RUNTIME_PATH + '");' + content;
   }
 
   // Parse code through Traceur
   try {
     delete options.runtime;
-    var compiler = new traceur.Compiler(options);
+    var compiler = new traceur.NodeCompiler(options);
     result = compiler.compile(content, filename);
 
     // Process source map (if available) and return result
