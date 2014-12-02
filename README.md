@@ -1,5 +1,6 @@
-# traceur-loader 0.6.1
-[Traceur](https://github.com/google/traceur-compiler) 0.0.7x loader for [Webpack](https://webpack.github.io/).
+# traceur-loader 0.6.3
+[Traceur](https://github.com/google/traceur-compiler) 0.0.7x loader for
+[Webpack](https://webpack.github.io/).
 
 ## Before using
 
@@ -46,7 +47,7 @@ require("traceur?runtime!./script-file");
 require("traceur?experimental&symbols!./script-file");
 
 // All together now
-require("traceur?experimental&runtime&symbols!./script-file");
+require("traceur?runtime&symbols!./script-file");
 ```
 
 ### Recommended configuration (do not process modules)
@@ -76,12 +77,22 @@ require("traceur?experimental&runtime&symbols!./script-file");
 ```
 
 ### Defaults
-- `modules = 'commonjs'` - Modules set to CommonJS (consistent with Node.js and Webpack)
-- `runtime = false` - Traceur runtime by default not auto included
+```javascript
+{
+  // Modules set to CommonJS (consistent with Node.js and Webpack)
+  modules: 'commonjs',
 
+  // Source maps are built and fed to Webpack (use Webpack options)
+  sourceMaps: true,
+
+  // Traceur runtime by default not auto included
+  runtime: false
+}
+```
 
 ### Runtime path
 Access to the runtime path is available as a direct reference:
 `require('traceur-loader').runtime`.
 
-To view all Traceur options, visit [here](https://github.com/google/traceur-compiler/blob/master/src/Options.js).
+To view all Traceur options, visit
+[here](https://github.com/google/traceur-compiler/blob/master/src/Options.js).
