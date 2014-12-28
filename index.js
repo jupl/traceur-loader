@@ -16,6 +16,7 @@ module.exports = function(source) {
   var map;
   var options = {};
   var result;
+  var runtime;
 
   this.cacheable && this.cacheable();
 
@@ -38,19 +39,25 @@ module.exports = function(source) {
     }
   });
 
+  // Move runtime option from options to variable
+  runtime = options.runtime;
+  delete options.runtime;
+
   // Handle Traceur runtime
   if(filename === traceur.RUNTIME_PATH) {
     return content;
   }
-  if(options.runtime) {
-    content = 'require("' + traceur.RUNTIME_PATH + '");' + content;
-  }
 
   // Parse code through Traceur
   try {
-    delete options.runtime;
     var compiler = new traceur.Compiler(options);
     result = compiler.compile(content, filename);
+
+    // Include runtime after compilation due to generators hoisting the
+    // runtime usage to the very top
+    if(runtime) {
+      result = 'require("' + traceur.RUNTIME_PATH + '");' + result;
+    }
 
     // Process source map (if available) and return result
     if(options.sourceMaps) {
