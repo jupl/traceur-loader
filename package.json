@@ -12,8 +12,10 @@
   "main": "index.js",
   "dependencies": {
     "extend-object": "^1.0.0",
-    "loader-utils": "^0.2.3",
-    "traceur": "0.0.79"
+    "loader-utils": "^0.2.3"
+  },
+  "peerDependencies": {
+    "traceur": "^0.0.79"
   },
   "keywords": [
     "webpack",
