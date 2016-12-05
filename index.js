@@ -10,7 +10,7 @@ var defaults = {
   sourceMaps: true
 };
 
-module.exports = function(source) {
+module.exports = function (source) {
   var filename = loaderUtils.getRemainingRequest(this);
   var content = source;
   var map;
@@ -21,8 +21,8 @@ module.exports = function(source) {
 
   // Process query and setup options/defaults/forced for Traceur
   extend(options, defaults, loaderUtils.parseQuery(this.query));
-  Object.keys(options).forEach(function(key) {
-    switch(options[key]) {
+  Object.keys(options).forEach(function (key) {
+    switch (options[key]) {
       case 'true':
         options[key] = true;
         break;
@@ -39,11 +39,11 @@ module.exports = function(source) {
   });
 
   // Handle Traceur runtime
-  if(filename === traceur.RUNTIME_PATH) {
+  if (filename === traceur.RUNTIME_PATH) {
     return content;
   }
-  if(options.runtime) {
-    content = 'require("' + traceur.RUNTIME_PATH + '");' + content;
+  if (options.runtime) {
+    content = 'require("' + traceur.RUNTIME_PATH + '");' + os.EOL + content;
   }
 
   // Parse code through Traceur
@@ -53,7 +53,7 @@ module.exports = function(source) {
     result = compiler.compile(content, filename);
 
     // Process source map (if available) and return result
-    if(options.sourceMaps) {
+    if (options.sourceMaps) {
       map = JSON.parse(compiler.getSourceMap());
       map.sourcesContent = [source];
       this.callback(null, result, map);
@@ -62,8 +62,12 @@ module.exports = function(source) {
       return result;
     }
   }
-  catch(errors) {
-    throw new Error(errors.join(os.EOL));
+  catch (errors) {
+    if (Array.isArray(errors)) {
+      throw new Error(errors.join(os.EOL));
+    }
+
+    throw errors;
   }
 };
 
