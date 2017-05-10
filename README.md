@@ -1,4 +1,6 @@
 # traceur-loader 0.6.3
+
+[![Greenkeeper badge](https://badges.greenkeeper.io/jupl/traceur-loader.svg)](https://greenkeeper.io/)
 [Traceur](https://github.com/google/traceur-compiler) 0.0.72 loader for
 [Webpack](https://webpack.github.io/).
 
